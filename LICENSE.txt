@@ -1,0 +1,9 @@
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+Copyright © 2026 Michelangelo Canonico / Direct Sound Records.
+
+This paper and the accompanying open specification may be shared and adapted for any purpose, including commercial use, provided appropriate credit is given, a link to the licence is supplied, and changes are indicated.
+
+Licence summary and legal code: https://creativecommons.org/licenses/by/4.0/
+
+Third-party product names, trademarks, referenced standards and cited publications remain the property of their respective owners. The CC BY 4.0 licence applies only to original material in this publication package.
