@@ -1,0 +1,48 @@
+cff-version: 1.2.0
+message: Please cite this technical methods paper and the DSR-VPF version used.
+title: DSR Vinyl Playback Fingerprint Method v1.0 specification package
+type: dataset
+authors:
+- family-names: Canonico
+  given-names: Michelangelo
+  affiliation: Direct Sound Records
+identifiers:
+- type: doi
+  value: 10.5281/zenodo.22287619
+- type: url
+  value: https://directsoundrecords.com/vinyl-playback-fingerprint/
+  description: Canonical DSR Technical Journal article
+- type: url
+  value: https://github.com/directsoundrecords/vinyl-playback-fingerprint
+  description: Open DSR-VPF specification repository
+url: https://doi.org/10.5281/zenodo.22287619
+repository-artifact: https://github.com/directsoundrecords/vinyl-playback-fingerprint
+abstract: Versioned publication and specification materials for DSR-VPF v1.0, including the fixed VPF-Core-1K v1.0 profile, machine-readable schemas, citation metadata and examples.
+keywords:
+- vinyl playback
+- turntable measurement
+- cartridge measurement
+- wow and flutter
+- crosstalk
+- distortion
+- measurement fingerprint
+- multidimensional comparison
+- reproducible measurement
+- Groove Scope
+- DSR-VPF
+license: CC-BY-4.0
+version: '1.0'
+date-released: '2026-09-03'
+preferred-citation:
+  type: report
+  title: 'Vinyl Playback Fingerprint: A Persistent Multidimensional Method for the Objective Characterisation and Comparison of Analogue Record Playback'
+  authors:
+  - family-names: Canonico
+    given-names: Michelangelo
+  institution:
+    name: Direct Sound Records
+  year: 2026
+  month: 9
+  version: '1.0'
+  doi: 10.5281/zenodo.22287619
+  url: https://doi.org/10.5281/zenodo.22287619
