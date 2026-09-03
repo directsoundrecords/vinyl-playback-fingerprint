@@ -1,0 +1,137 @@
+{
+  "$schema": "./vpf-profile.schema.json",
+  "profile_id": "VPF-Core-1K",
+  "profile_version": "1.0",
+  "method": {
+    "id": "DSR-VPF",
+    "version": "1.0"
+  },
+  "title": "VPF-Core-1K v1.0 metric profile",
+  "status": "published",
+  "publication_date": "2026-09-03",
+  "description": "The first fixed DSR-VPF profile for a compact 1 kHz reference workflow. The display transforms are stable diagnostic coordinates, not pass/fail, audibility or sound-quality thresholds.",
+  "carrier_frequency_hz": 1000,
+  "projection": {
+    "id": "radar-deviation",
+    "version": "1.0",
+    "label": "Radar deviation projection",
+    "orientation": "target_or_lowest_defined_deviation_at_centre; increasing_deviation_outward",
+    "axis_order": [
+      "speed_error",
+      "weighted_wow_flutter",
+      "channel_balance",
+      "separation_deficiency",
+      "crosstalk_asymmetry",
+      "thd"
+    ],
+    "polygon_area_is_quality_score": false,
+    "raw_values_must_be_exposed": true
+  },
+  "quality_mapping": {
+    "primary_valid": 1.0,
+    "supporting_valid": 0.5,
+    "diagnostic_only": 0.0,
+    "variable_or_unreliable": 0.0,
+    "unavailable": 0.0
+  },
+  "comparison": {
+    "minimum_aggregate_coverage": 0.6666666666666666,
+    "profile_weights": "equal",
+    "distance_metric": "missing-data-aware weighted Euclidean distance in normalised profile space",
+    "permitted_classes": ["A", "B", "C"],
+    "descriptive_only_class": "D",
+    "distance_is_quality_score": false
+  },
+  "dimensions": [
+    {
+      "id": "speed_error",
+      "label": "Speed accuracy",
+      "raw_quantity": "signed playback-speed error relative to the recorded nominal tone",
+      "raw_unit": "%",
+      "profile_weight": 1.0,
+      "target": 0.0,
+      "outer_display_bound": 3.0,
+      "transform": "min(abs(raw_value) / 3.00, 1)",
+      "sign_retained": true,
+      "required_signal_role": "stable nominal 1 kHz reference tone",
+      "admissibility_note": "Capture-clock and test-tone accuracy must be documented or bounded."
+    },
+    {
+      "id": "weighted_wow_flutter",
+      "label": "Weighted wow and flutter",
+      "raw_quantity": "weighted wow-and-flutter statistic with named weighting, detector and algorithm",
+      "raw_unit": "%",
+      "profile_weight": 1.0,
+      "target": 0.0,
+      "outer_display_bound": 0.3,
+      "transform": "min(raw_value / 0.300, 1)",
+      "sign_retained": false,
+      "required_signal_role": "stable nominal 1 kHz reference tone",
+      "admissibility_note": "Method labels such as IEC, DIN or AES must not be collapsed into one generic field."
+    },
+    {
+      "id": "channel_balance",
+      "label": "Channel balance",
+      "raw_quantity": "signed left-minus-right level difference",
+      "raw_unit": "dB",
+      "profile_weight": 1.0,
+      "target": 0.0,
+      "outer_display_bound": 3.0,
+      "transform": "min(abs(raw_value) / 3.00, 1)",
+      "sign_retained": true,
+      "required_signal_role": "equal-level dual-channel 1 kHz reference tone",
+      "admissibility_note": "Requires stable level, defined amplitude estimator, analysis window and adequate headroom."
+    },
+    {
+      "id": "separation_deficiency",
+      "label": "Stereo separation deficiency",
+      "raw_quantity": "average stereo separation",
+      "raw_unit": "dB separation",
+      "profile_weight": 1.0,
+      "target": 40.0,
+      "outer_display_bound": 10.0,
+      "transform": "min(max(40.0 - raw_value, 0.0) / 30.0, 1)",
+      "sign_retained": false,
+      "required_signal_role": "matched left-only and right-only 1 kHz channel-separation tracks",
+      "admissibility_note": "Both directional values, track orientation and averaging rule must be retained."
+    },
+    {
+      "id": "crosstalk_asymmetry",
+      "label": "Directional crosstalk asymmetry",
+      "raw_quantity": "absolute difference between left-to-right and right-to-left separation",
+      "raw_unit": "dB",
+      "profile_weight": 1.0,
+      "target": 0.0,
+      "outer_display_bound": 12.0,
+      "transform": "min(abs(raw_value) / 12.0, 1)",
+      "sign_retained": false,
+      "required_signal_role": "matched left-only and right-only 1 kHz channel-separation tracks",
+      "admissibility_note": "Not interchangeable with average stereo separation."
+    },
+    {
+      "id": "thd",
+      "label": "Total harmonic distortion",
+      "raw_quantity": "declared per-channel or combined total harmonic distortion",
+      "raw_unit": "%",
+      "profile_weight": 1.0,
+      "target": 0.0,
+      "outer_display_bound": 3.0,
+      "transform": "min(raw_value / 3.00, 1)",
+      "sign_retained": false,
+      "required_signal_role": "clean continuous 1 kHz reference tone",
+      "admissibility_note": "Harmonic limit, bandwidth, windowing, aggregation and frame-quality rule must be declared."
+    }
+  ],
+  "auxiliary_metrics": [
+    "calculated_rpm",
+    "settled_rpm_range",
+    "raw_speed_variation",
+    "unweighted_wow",
+    "unweighted_flutter",
+    "directional_crosstalk_values",
+    "individual_harmonics",
+    "relative_residual_noise",
+    "valid_frame_statistics"
+  ],
+  "licence": "CC-BY-4.0"
+}
