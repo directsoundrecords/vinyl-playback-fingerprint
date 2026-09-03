@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://directsoundrecords.com/specifications/dsr-vpf/v1.0/vpf-profile.schema.json",
+  "title": "DSR-VPF metric profile schema",
+  "type": "object",
+  "required": [
+    "profile_id",
+    "profile_version",
+    "method",
+    "status",
+    "projection",
+    "quality_mapping",
+    "comparison",
+    "dimensions",
+    "licence"
+  ],
+  "properties": {
+    "$schema": {"type": "string"},
+    "profile_id": {"type": "string", "minLength": 1},
+    "profile_version": {"type": "string", "pattern": "^\\d+\\.\\d+(?:\\.\\d+)?$"},
+    "method": {
+      "type": "object",
+      "required": ["id", "version"],
+      "properties": {
+        "id": {"type": "string"},
+        "version": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "title": {"type": "string"},
+    "status": {"enum": ["draft", "published", "superseded", "withdrawn"]},
+    "publication_date": {"type": "string", "format": "date"},
+    "description": {"type": "string"},
+    "carrier_frequency_hz": {"type": "number", "exclusiveMinimum": 0},
+    "projection": {"type": "object"},
+    "quality_mapping": {
+      "type": "object",
+      "required": ["primary_valid", "supporting_valid", "diagnostic_only", "variable_or_unreliable", "unavailable"],
+      "additionalProperties": {"type": "number", "minimum": 0, "maximum": 1}
+    },
+    "comparison": {"type": "object"},
+    "dimensions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "label", "raw_quantity", "raw_unit", "profile_weight", "transform"],
+        "properties": {
+          "id": {"type": "string"},
+          "label": {"type": "string"},
+          "raw_quantity": {"type": "string"},
+          "raw_unit": {"type": "string"},
+          "profile_weight": {"type": "number", "exclusiveMinimum": 0},
+          "target": {"type": "number"},
+          "outer_display_bound": {"type": "number"},
+          "transform": {"type": "string"},
+          "sign_retained": {"type": "boolean"},
+          "required_signal_role": {"type": "string"},
+          "admissibility_note": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "auxiliary_metrics": {
+      "type": "array",
+      "items": {"type": "string"},
+      "uniqueItems": true
+    },
+    "licence": {"const": "CC-BY-4.0"}
+  },
+  "additionalProperties": false
+}
