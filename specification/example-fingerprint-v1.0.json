@@ -1,0 +1,92 @@
+{
+  "$schema": "./dsr-vpf.schema.json",
+  "schema_name": "DSR-VPF",
+  "schema_version": "1.0",
+  "fingerprint_id": "VPF-EXAMPLE-0001",
+  "measurement_id": "EXAMPLE-0001",
+  "record_version": "1.0",
+  "publication_status": "draft",
+  "created_at": "2026-09-03T00:00:00Z",
+  "method": {"id": "DSR-VPF", "version": "1.0"},
+  "profile": {"id": "VPF-Core-1K", "version": "1.0"},
+  "projection": {
+    "id": "radar-deviation",
+    "version": "1.0",
+    "axis_order": [
+      "speed_error",
+      "weighted_wow_flutter",
+      "channel_balance",
+      "separation_deficiency",
+      "crosstalk_asymmetry",
+      "thd"
+    ]
+  },
+  "declared_measurand": "vinyl_playback_session",
+  "comparison_class_eligibility": ["D"],
+  "measurement_context": {
+    "note": "Illustrative structure only. Values are examples and are not a published measurement."
+  },
+  "dimensions": [
+    {
+      "id": "speed_error",
+      "raw_quantity": "signed playback-speed error",
+      "raw_value": -0.30,
+      "unit": "%",
+      "quality": "primary_valid",
+      "admissibility_weight": 1.0,
+      "profile_weight": 1.0,
+      "transformed_value": 0.10
+    },
+    {
+      "id": "weighted_wow_flutter",
+      "raw_quantity": "weighted wow and flutter",
+      "raw_value": 0.045,
+      "unit": "%",
+      "quality": "primary_valid",
+      "admissibility_weight": 1.0,
+      "profile_weight": 1.0,
+      "transformed_value": 0.15
+    },
+    {
+      "id": "channel_balance",
+      "raw_quantity": "signed left-minus-right level difference",
+      "raw_value": -0.60,
+      "unit": "dB",
+      "quality": "supporting_valid",
+      "admissibility_weight": 0.5,
+      "profile_weight": 1.0,
+      "transformed_value": 0.20
+    },
+    {
+      "id": "separation_deficiency",
+      "raw_quantity": "average stereo separation",
+      "raw_value": 31.0,
+      "unit": "dB separation",
+      "quality": "supporting_valid",
+      "admissibility_weight": 0.5,
+      "profile_weight": 1.0,
+      "transformed_value": 0.30
+    },
+    {
+      "id": "crosstalk_asymmetry",
+      "raw_quantity": "directional stereo-separation difference",
+      "raw_value": 4.8,
+      "unit": "dB",
+      "quality": "supporting_valid",
+      "admissibility_weight": 0.5,
+      "profile_weight": 1.0,
+      "transformed_value": 0.40
+    },
+    {
+      "id": "thd",
+      "raw_quantity": "total harmonic distortion",
+      "raw_value": 0.30,
+      "unit": "%",
+      "quality": "diagnostic_only",
+      "admissibility_weight": 0.0,
+      "profile_weight": 1.0,
+      "transformed_value": 0.10
+    }
+  ],
+  "licence": "CC-BY-4.0"
+}
